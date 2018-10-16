@@ -7,7 +7,7 @@ describe("defaults", () => {
     const source = {};
     const result = defaults(target, source);
 
-    expect(result).to.be(target);
+    expect(result).to.eql(target);
   });
 
   it("should copy any property whose key is not already set on the target", () => {
