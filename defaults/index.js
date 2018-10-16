@@ -4,8 +4,17 @@
 // const aws = {compute: "ec2"};
 // defaults(aws, {compute: "lambda", storage: "s3"});
 // => {compute: "ec2", storage: "s3"}
-const defaults = () => {
-  // [SOLUTION HERE]
+const defaults = (object, ...items) => {
+  items.forEach((item) => {
+    Object.keys(item)
+      .filter((key) => {
+        return !Object.keys(object).includes(key);
+      })
+      .forEach((key) => {
+        object[key] = item[key];
+      });
+  });
+  return object;
 };
 
 module.exports = { defaults };
