@@ -10,7 +10,11 @@
 // => [3]
 
 const difference = function(baseArray, ...others) {
-  // [SOLUTION HERE]
+  let result = [];
+
+  if (!baseArray || (Array.isArray(baseArray) && baseArray.length) || Object.keys(baseArray).length < 1) {
+    return result;
+  }
 };
 
 module.exports = { difference };
