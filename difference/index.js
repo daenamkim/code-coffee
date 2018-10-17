@@ -12,9 +12,21 @@
 const difference = function(baseArray, ...others) {
   let result = [];
 
-  if (!baseArray || (Array.isArray(baseArray) && baseArray.length) || Object.keys(baseArray).length < 1) {
+  if (!baseArray || (Array.isArray(baseArray) && baseArray.length < 1) || Object.keys(baseArray).length < 1) {
     return result;
   }
+
+  baseArray.forEach((base) => {
+    let found = false;
+    others.forEach((other) => {
+      found = other.includes(base);
+    });
+    if (!found) {
+      result.push(base);
+    }
+  });
+
+  return result;
 };
 
 module.exports = { difference };
