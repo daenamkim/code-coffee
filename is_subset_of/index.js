@@ -28,6 +28,13 @@ Array.prototype.isSubsetOf = function(target) {
 
   let found = true;
   for (item of this) {
+    // FIXME: I am little bit confusing
+    // because of "[null].isSubsetOf([1, null]) // true" in head comments.
+    if (!item) {
+      found = false;
+      break;
+    }
+
     let check = JSON.stringify(item);
     if (JSON.stringify(target).match(check) === null) {
       found = false;
