@@ -3,11 +3,11 @@
 
     isSubsetOf should take an input array and return whether the context array
     is a subset of the input array.
-    
+
     - Method work for arrays that contain objects and/or arrays as elements as well
     - Disregard duplicates
 
-    ['pop','crackle'].isSubsetOf(['snap','crackle','pop']); //true  
+    ['pop','crackle'].isSubsetOf(['snap','crackle','pop']); //true
     [null].isSubsetOf([1, null]) // true
     [[1], [2, [3, 4]]].isSubsetOf([[2, [3, 4]], [1]]); // true
     [[1], [2, [3, 4]]].isSubsetOf([[1], [2], [3, 4]])); // false
@@ -21,6 +21,10 @@
   */
 
 /* eslint-disable no-extend-native */
-Array.prototype.isSubsetOf = function() {
-  // your code here
+Array.prototype.isSubsetOf = function(target) {
+  return false;
+};
+
+module.exports = {
+  Array,
 };
