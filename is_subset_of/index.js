@@ -22,6 +22,10 @@
 
 /* eslint-disable no-extend-native */
 Array.prototype.isSubsetOf = function(target) {
+  if (!Array.isArray(target)) {
+    return;
+  }
+
   let found = true;
   for (item of this) {
     let check = JSON.stringify(item);
