@@ -23,7 +23,7 @@
 /* eslint-disable no-extend-native */
 Array.prototype.isSubsetOf = function(target) {
   if (!Array.isArray(target)) {
-    return;
+    return false;
   }
 
   let found = true;
