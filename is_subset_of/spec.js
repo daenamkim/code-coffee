@@ -1,5 +1,5 @@
 const { expect } = require("chai");
-const { Array } = require(".");
+const _ = require(".");
 
 describe.only("isSubsetOf", () => {
   let nestedArray, objectSample;
@@ -17,7 +17,7 @@ describe.only("isSubsetOf", () => {
     expect(['pop','crackle'].isSubsetOf(['snap','crackle','pop'])).to.be.true;
   });
   it("should return true when array includes null and there it is", () => {
-    expect([null].isSubsetOf([1, null])).to.be.false;
+    expect([null].isSubsetOf([1, null])).to.be.true;
   });
   it("should return true when array got nested arrays and there it is", () => {
     expect(nestedArray.isSubsetOf([[2, [3, 4]], [1]])).to.be.true;
@@ -63,5 +63,14 @@ describe.only("isSubsetOf", () => {
     expect([].isSubsetOf()).to.be.false;
     expect([null].isSubsetOf(["null"])).to.be.false;
     expect([].isSubsetOf("test")).to.be.false;
+  });
+  it("should return true when the input array contains all the elements in the context array", () => {
+    expect(["pop", "crackle"].isSubsetOf(["snap", "crackle", "pop"])).to.be.true;
+    expect(["pop"].isSubsetOf(["snap"])).to.be.false;
+    expect([1, 2].isSubsetOf([1, 3, 4, 2])).to.be.true;
+    expect([1, "beagle"].isSubsetOf(["corgi", "beagle", 1])).to.be.true;
+    expect([""].isSubsetOf([undefined, ""])).to.be.true;
+    expect([null].isSubsetOf([1, null])).to.be.true;
+    expect([undefined].isSubsetOf([undefined, null])).to.be.true;
   });
 });

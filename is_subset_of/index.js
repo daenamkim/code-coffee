@@ -22,7 +22,7 @@
 
 /* eslint-disable no-extend-native */
 Array.prototype.isSubsetOf = function(input) {
-  if (this.length < 1 || this.includes(null) || !Array.isArray(input) || input.includes(null)) {
+  if (this.length < 1 || !Array.isArray(input)) {
     return false;
   }
 
@@ -38,8 +38,4 @@ Array.prototype.isSubsetOf = function(input) {
     }
   });
   return found === this.length;
-};
-
-module.exports = {
-  Array,
 };
