@@ -17,14 +17,13 @@ describe.only("isSubsetOf", () => {
     expect(['pop','crackle'].isSubsetOf(['snap','crackle','pop'])).to.be.true;
   });
   it("should return true when array includes null and there it is", () => {
-    // FIXME: in head comments of index.js, it is like [null].isSubsetOf([1, null]) // true
     expect([null].isSubsetOf([1, null])).to.be.false;
   });
   it("should return true when array got nested arrays and there it is", () => {
     expect(nestedArray.isSubsetOf([[2, [3, 4]], [1]])).to.be.true;
   });
   it("should return false there is no element exist", () => {
-    expect(nestedArray.isSubsetOf([[1], [2], [3, 4]])).to.be.true;
+    expect(nestedArray.isSubsetOf([[1], [2], [3, 4]])).to.be.false;
   });
   it("should return true when array consist of object and there it is", () => {
     expect(nestedArrayObject.isSubsetOf([{ "key1": 1 }, { "key2": { "key3": 3, "key4": 4 }}, {"key5": 5}])).to.be.true;

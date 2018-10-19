@@ -26,21 +26,18 @@ Array.prototype.isSubsetOf = function(input) {
     return false;
   }
 
-  console.log(intput);
+  let found = 0;
+  let intpuItems = input.map((item) => {
+    return JSON.stringify(item);
+  });
+  intputItems = new Set(intpuItems);
 
-  let found = true;
-  for (item of this) {
-    if (!item) {
-      found = false;
-      break;
+  this.forEach((item) => {
+    if (intputItems.has(JSON.stringify(item))) {
+      found++;
     }
-
-    let check = JSON.stringify(item);
-    if (JSON.stringify(input).match(check) === null) {
-      found = false;
-    }
-  }
-  return found;
+  });
+  return found === this.length;
 };
 
 module.exports = {
