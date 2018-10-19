@@ -21,10 +21,12 @@
   */
 
 /* eslint-disable no-extend-native */
-Array.prototype.isSubsetOf = function(target) {
-  if (this.length < 1 || this.includes(null) || !Array.isArray(target) || target.includes(null)) {
+Array.prototype.isSubsetOf = function(input) {
+  if (this.length < 1 || this.includes(null) || !Array.isArray(input) || input.includes(null)) {
     return false;
   }
+
+  console.log(intput);
 
   let found = true;
   for (item of this) {
@@ -34,7 +36,7 @@ Array.prototype.isSubsetOf = function(target) {
     }
 
     let check = JSON.stringify(item);
-    if (JSON.stringify(target).match(check) === null) {
+    if (JSON.stringify(input).match(check) === null) {
       found = false;
     }
   }
