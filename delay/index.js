@@ -5,6 +5,8 @@
 // delay(notify, 1000, 'One second has passed!');
 // => 'One second has passed!' // A alert appears after one second.
 const delay = (func, wait, ...args) => {
-  // [SOLUTION HERE]
+  setTimeout(() => {
+    func(...args);
+  }, wait);
 };
 module.exports = { delay };
