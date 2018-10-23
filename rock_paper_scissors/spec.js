@@ -1,7 +1,7 @@
 const { expect } = require("chai");
 const { rockPaperScissors } = require(".");
 
-describe.only("rock paper scissors", () => {
+describe("rock paper scissors", () => {
   it("should return the array containing 27 elements", () => {
     const actual = rockPaperScissors();
 
