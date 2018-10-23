@@ -14,8 +14,21 @@
    * Example:
    *   rockPaperScissors(4); // => [['rock', 'rock', 'rock', 'rock'], etc...]
    */
-const rockPaperScissors = () => {
-  // FIXME: fill me out!
+const rockPaperScissors = (maxRound = 3) => {
+  const results = [];
+  const options = ["rock", "rock", "rock"];
+  function play(result, round) {
+    options.forEach((option) => {
+      result.push(option);
+      if (round <= 1) {
+        results.push(result);
+      } else {
+        play(result.slice(), round - 1);
+      }
+    });
+  }
+  play([], maxRound);
+  return results;
 };
 
 module.exports = { rockPaperScissors };
