@@ -1,7 +1,7 @@
 const { expect } = require("chai");
 const _ = require(".");
 
-describe.only("isSubsetOf", () => {
+describe("isSubsetOf", () => {
   let nestedArray, objectSample;
   beforeEach(() => {
     nestedArray = [[1], [2, [3, 4]]];
