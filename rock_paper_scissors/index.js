@@ -16,16 +16,17 @@
    */
 const rockPaperScissors = (maxRound = 3) => {
   const results = [];
-  const options = ["rock", "rock", "rock"];
+  const options = ["rock", "paper", "scissors"];
   function play(result, round) {
-    options.forEach((option) => {
-      result.push(option);
-      if (round <= 1) {
-        results.push(result);
-      } else {
-        play(result.slice(), round - 1);
-      }
-    });
+    if (round < 1) {
+      results.push(result);
+    } else {
+      options.forEach((option) => {
+        const newResult = result.slice();
+        newResult.push(option);
+        play(newResult, round - 1);
+      });
+    }
   }
   play([], maxRound);
   return results;
