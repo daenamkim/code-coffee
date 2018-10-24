@@ -4,16 +4,17 @@ const sinonChai = require("sinon-chai");
 const { insertionSort } = require(".");
 use(sinonChai);
 
-describe("Insertion Sort", () => {
+describe.only("Insertion Sort", () => {
   // spy on native methods
+  let spyArray;
   beforeEach(() => {
-    spy(Array.prototype, "sort");
+    spyArray = spy(Array.prototype, "sort");
   });
 
   // stop spying on native methods
   afterEach(() => {
-    expect(Array.prototype.sort).not.to.have.been.called();
-    Array.prototype.sort.calls.restore();
+    expect(Array.prototype.sort).not.to.have.been.called;
+    spyArray.restore();
   });
 
   it("should return the sorted array", () => {
