@@ -19,6 +19,6 @@ describe("rock paper scissors", () => {
 
 describe("Your original tests", () => {
   it("should be something", () => {
-    expect(1).toEqual(1);
+    expect(1).to.equal(1);
   });
 });

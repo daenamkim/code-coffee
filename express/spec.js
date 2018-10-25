@@ -56,12 +56,11 @@ describe("The express server", () => {
         res.should.be.json;
         JSON.parse(res.text).result.should.equal(5);
       });
-    });
-
-    it("adds 3 + 2", async () => {
-      const res = await request.get("/3/plus/2");
-      res.should.be.json;
-      JSON.parse(res.text).result.should.equal(5);
+      it("adds 3 + 2", async () => {
+        const res = await request.get("/3/plus/2");
+        res.should.be.json;
+        JSON.parse(res.text).result.should.equal(5);
+      });
     });
   });
 
@@ -142,7 +141,7 @@ describe("The express server", () => {
           res.should.have.status(401);
         });
 
-        it("Returns status 403 if anything is wrong", async () => {
+        it("Returns status 403 if missing value exists", async () => {
           const res = await request.post("/secret/message").query({ token: 6 });
           res.should.have.status(403);
         });
