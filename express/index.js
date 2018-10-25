@@ -17,6 +17,7 @@
  */
 const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
 
 const teapot = (req, res) => {
   res.status(418).end();
@@ -47,12 +48,29 @@ const plus = (req, res) => {
   res.json({ result: sum });
 };
 
+function postEcho(req, res) {
+  res.json(req.body);
+}
+
+const optionsEcho = (req, res) => {
+  const result = {};
+  Object.keys(req.body).forEach((key) => {
+    result[req.body[key]] = key;
+  });
+  res.json(result);
+};
+
 const setupExpressServer = () => {
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: true }));
   app.get("/teapot", teapot);
   app.get("/hello", hello);
   app.get("/hellojson", helloJson);
   app.get("/greet", greet);
   app.get("/:a/plus/:b", plus);
+  app.route("/echo")
+    .post(postEcho)
+    .options(optionsEcho);
 
   return app;
 };
