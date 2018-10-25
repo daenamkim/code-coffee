@@ -24,13 +24,8 @@ const teapot = (req, res) => {
 };
 
 const hello = (req, res) => {
+  //res.set("Content-Type", "text/html");
   res.send("world");
-  // if "text/html" format is actually needed.
-  // res.format({
-  //   "text/html": () => {
-  //     res.send("world");
-  //   },
-  // });
 };
 
 const helloJson = (req, res) => {
@@ -60,7 +55,32 @@ const optionsEcho = (req, res) => {
   res.json(result);
 };
 
+const getSecret = (req, res) => {
+  if (Object.keys(req.query).length < 1) {
+    res.status(401).end();
+  }
+
+  if (req.query.token % 2 > 0) {
+    res.status(401).end();
+  }
+
+  res.status(200).end();
+};
+
+const postSecret = (req, res) => {
+  if (!req.query.token || req.query.token % 2 > 0) {
+    res.status(401).send("token is invalid.");
+  }
+
+  if (!req.body || parseInt(req.body.key) === undefined || req.body.shout === undefined) {
+    res.status(403).send("missing value exists.");
+  }
+
+  res.status(200).send("polo");
+};
+
 const setupExpressServer = () => {
+  // TODO: could be a problem if not using express.urlencoded({ extended: true })?
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
   app.get("/teapot", teapot);
@@ -71,6 +91,8 @@ const setupExpressServer = () => {
   app.route("/echo")
     .post(postEcho)
     .options(optionsEcho);
+  app.get("/secret", getSecret);
+  app.post("/secret/message", postSecret);
 
   return app;
 };
