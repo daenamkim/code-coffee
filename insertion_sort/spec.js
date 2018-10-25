@@ -4,7 +4,7 @@ const sinonChai = require("sinon-chai");
 const { insertionSort } = require(".");
 use(sinonChai);
 
-describe.only("Insertion Sort", () => {
+describe("Insertion Sort", () => {
   // spy on native methods
   let spyArray;
   beforeEach(() => {
