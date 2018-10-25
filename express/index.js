@@ -39,7 +39,7 @@ const helloJson = (req, res) => {
 };
 
 const greet = (req, res) => {
-
+  res.send(`Hello ${req.query.name}!`);
 };
 
 const plus = (req, res) => {
