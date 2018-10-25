@@ -43,7 +43,8 @@ const greet = (req, res) => {
 };
 
 const plus = (req, res) => {
-
+  const sum = parseInt(req.params.a) + parseInt(req.params.b);
+  res.json({ result: sum });
 };
 
 const setupExpressServer = () => {
