@@ -15,8 +15,45 @@
  *
  * @returns a fully configured express server
  */
+const express = require("express");
+const app = express();
+
+const teapot = (req, res) => {
+  res.status(418).end();
+};
+
+const hello = (req, res) => {
+  res.send("world");
+  // if "text/html" format is actually needed.
+  // res.format({
+  //   "text/html": () => {
+  //     res.send("world");
+  //   },
+  // });
+};
+
+const helloJson = (req, res) => {
+  res.json({ hello: "world" });
+  // same with res.json().
+  // res.send({ hello: "world" });
+};
+
+const greet = (req, res) => {
+
+};
+
+const plus = (req, res) => {
+
+};
+
 const setupExpressServer = () => {
-  /* return configured express app */
+  app.get("/teapot", teapot);
+  app.get("/hello", hello);
+  app.get("/hellojson", helloJson);
+  app.get("/greet", greet);
+  app.get("/:a/plus/:b", plus);
+
+  return app;
 };
 
 module.exports = { setupExpressServer };
