@@ -23,8 +23,24 @@
    *
    *
    */
-const balancedParens = () => {
-  // [SOLUTION HERE]
+const balancedParens = (input) => {
+  if (typeof input !== "string") {
+    return false;
+  }
+
+  let lastLength = input.length;
+  let newInput = input.replace(/[A-Za-z\s:=+-;]/g, "");
+  while (1) {
+    newInput = newInput.replace(/(\(\))|(\{\})|(\[\])/, "");
+    const newLength = newInput.length;
+    if (newLength === 0) {
+      return true;
+    } else if (newLength < lastLength) {
+      lastLength = newLength;
+      continue;
+    }
+    return false;
+  }
 };
 
 module.exports = { balancedParens };
