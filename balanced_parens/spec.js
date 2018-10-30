@@ -1,7 +1,7 @@
 const { balancedParens } = require("./index");
 const { expect } = require("chai");
 
-describe.only("balanceParens", () => {
+describe("balanceParens", () => {
   it("should return false if parens are not pair", () => {
     let actual = balancedParens("(");
     expect(actual).to.be.false;
