@@ -24,8 +24,36 @@
 // ## Constraints
 // Map size is at least 1x1 and at most 10x10.
 // Time complexity must be O(n) or faster.
-const islands = () => {
-  // FIXME: fill me out!
+const islands = (map) => {
+  let founds = 0;
+  const maxRow = map.length;
+  const maxCol = map[0].length;
+  function removeNear(row, col) {
+    map[row][col] = 0;
+    if (map[row - 1] && map[row - 1][col]) {
+      removeNear(row - 1, col);
+    }
+    if (map[row + 1] && map[row + 1][col]) {
+      removeNear(row + 1, col);
+    }
+    if (map[row][col - 1]) {
+      removeNear(row, col - 1);
+    }
+    if (map[row][col + 1]) {
+      removeNear(row, col + 1);
+    }
+  }
+
+  for (let i = 0; i < maxRow; i++) {
+    for (let j = 0; j < maxCol; j++) {
+      if (map[i][j] === 1) {
+        founds++;
+        removeNear(i, j);
+      }
+    }
+  }
+
+  return founds;
 };
 
 module.exports = { islands };
