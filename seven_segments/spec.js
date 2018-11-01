@@ -1,7 +1,7 @@
 const { expect } = require("chai");
 const { interpretDisplay } = require(".");
 
-describe.only("Seven Segment Display Interpreter", () => {
+describe("Seven Segment Display Interpreter", () => {
   it("should interpret the display for '123456789'", () => {
     const input = `    _  _     _  _  _  _  _ 
   | _| _||_||_ |_   ||_||_|
