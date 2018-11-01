@@ -1,7 +1,7 @@
 const { expect } = require("chai");
 const { islands } = require(".");
 
-describe.only("islands", () => {
+describe("islands", () => {
   describe("example tests", () => {
     it("should return 4", () => {
       const map = [[0, 1, 0, 1], [0, 0, 0, 0], [1, 0, 1, 0], [1, 0, 1, 0]];
@@ -20,11 +20,13 @@ describe.only("islands", () => {
 
       expect(islands(map)).to.equal(1);
     });
-  });
 
-  // describe("Your original tests", () => {
-  //   it("should be something", () => {
-  //     expect(1).toEqual(1);
-  //   });
-  // });
+    it("should return 1", () => {
+      const map = [[0, 1, 1, 1],
+                   [0, 0, 1, 0],
+                   [1, 0, 1, 0],
+                   [1, 1, 1, 0]];
+      expect(islands(map)).to.equal(1);
+    });
+  });
 });
