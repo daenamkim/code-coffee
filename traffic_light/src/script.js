@@ -13,19 +13,21 @@ time allotted (so if you finish early, add additional
 functionality and make your code as high quality as you can!)
 */
 
-const IDLE = "";
+const IDLE = "idle";
 const RED = "red";
 const YELLOW = "yellow";
 const GREEN = "green";
+let isRunning = false;
+let timerId = null;
 
 const updateState = (state) => {
   switch (state) {
     case IDLE:
       return [RED, 2000];
     case RED:
-      return [GREEN, 2000];
+      return [GREEN, 2500];
     case GREEN:
-      return [YELLOW, 1000];
+      return [YELLOW, 800];
     case YELLOW:
       return [RED, 2000];
     default:
@@ -36,18 +38,33 @@ const updateState = (state) => {
 const updateLight = (state) => {
   const lights = document.getElementsByTagName("circle");
   [...lights].forEach(light => light.removeAttribute("class"));
-  document.getElementById(state).setAttribute("class", state);
+  if (state !== IDLE) {
+    document.getElementById(state).setAttribute("class", state);
+  }
+};
+
+const updateTimeDisplay = (delay) => {
+  document.getElementById("delay").innerHTML = `${delay} ms`;
 };
 
 const runSequence = (...params) => {
   const [currentState, delay] = updateState(params[0]);
   updateLight(currentState);
-  setTimeout(runSequence, delay, currentState);
-}
+  updateTimeDisplay(delay);
+  timerId = setTimeout(runSequence, delay, currentState);
+};
 
 window.onload = () => {
   const button = document.getElementById("run");
-  button.addEventListener("click", () => {
-    setTimeout(runSequence, 0, IDLE);
+  button.addEventListener("click", (e) => {
+    if (!isRunning) {
+      isRunning = true;
+      timerId = setTimeout(runSequence, 0, IDLE);
+    } else {
+      isRunning = false;
+      clearTimeout(timerId);
+      updateLight(IDLE);
+    }
+    e.target.innerHTML = (isRunning ? "Stop" : "Run") + " Sequence";
   });
 };
