@@ -28,3 +28,15 @@ div circle {
 #green {
   margin: 90px 0px 0px 10px;
 }
+
+.red {
+  background-color: red;
+}
+
+.yellow {
+  background-color: orange;
+}
+
+.green {
+  background-color: greenyellow;
+}
