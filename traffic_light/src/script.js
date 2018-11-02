@@ -21,15 +21,15 @@ const GREEN = "green";
 const updateState = (state) => {
   switch (state) {
     case IDLE:
-      return RED;
+      return [RED, 2000];
     case RED:
-      return GREEN;
+      return [GREEN, 2000];
     case GREEN:
-      return YELLOW;
+      return [YELLOW, 1000];
     case YELLOW:
-      return RED;
+      return [RED, 2000];
     default:
-      return IDLE;
+      return [IDLE, 0];
   }
 };
 
@@ -40,14 +40,14 @@ const updateLight = (state) => {
 };
 
 const runSequence = (...params) => {
-  const currentState = updateState(params[0]);
+  const [currentState, delay] = updateState(params[0]);
   updateLight(currentState);
-  setTimeout(runSequence, 1000, currentState);
+  setTimeout(runSequence, delay, currentState);
 }
 
 window.onload = () => {
   const button = document.getElementById("run");
   button.addEventListener("click", () => {
-    setTimeout(runSequence, 1000, IDLE);
+    setTimeout(runSequence, 0, IDLE);
   });
 };
