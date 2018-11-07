@@ -26,7 +26,7 @@ const solveGraph = (...params) => {
   const arcs = params[2];
   const newArcs = {};
   for (const arc of arcs) {
-    newArcs[`${arc.start}`] = arc.end;
+    newArcs[arc.start] = arc.end;
   }
 
   if (!newArcs[START]) {
