@@ -36,10 +36,10 @@ const solveGraph = (...params) => {
   let next = START;
   while (next) {
     if (newArcs[next] === END) {
-      // if next end is equal to end.
+      // if next end is equal to END.
       return true;
     } else if (next === END) {
-      // if next start is equal to end.
+      // if next start is equal to END.
       return true;
     }
 
