@@ -21,24 +21,24 @@
 // solveGraph("a", "c", arcs);
 // => false, because "c" can never be reached from "a"
 const solveGraph = (...params) => {
-  const start = params[0];
-  const end = params[1];
+  const START = params[0];
+  const END = params[1];
   const arcs = params[2];
   const newArcs = {};
   for (const arc of arcs) {
     newArcs[`${arc.start}`] = arc.end;
   }
 
-  if (!newArcs[start]) {
+  if (!newArcs[START]) {
     return false;
   }
 
-  let next = start;
+  let next = START;
   while (next) {
-    if (newArcs[next] === end) {
+    if (newArcs[next] === END) {
       // if next end is equal to end.
       return true;
-    } else if (next === end) {
+    } else if (next === END) {
       // if next start is equal to end.
       return true;
     }
