@@ -20,8 +20,33 @@
 // => true, because "b" can be reached from "a"
 // solveGraph("a", "c", arcs);
 // => false, because "c" can never be reached from "a"
-const solveGraph = () => {
-  // FIXME: fill me out!
+const solveGraph = (...params) => {
+  const start = params[0];
+  const end = params[1];
+  const arcs = params[2];
+  const newArcs = {};
+  for (const arc of arcs) {
+    newArcs[`${arc.start}`] = arc.end;
+  }
+
+  if (!newArcs[start]) {
+    return false;
+  }
+
+  let next = start;
+  while (next) {
+    if (newArcs[next] === end) {
+      // if next end is equal to end.
+      return true;
+    } else if (next === end) {
+      // if next start is equal to end.
+      return true;
+    }
+
+    next = newArcs[next];
+  }
+
+  return false;
 };
 
 module.exports = { solveGraph };
