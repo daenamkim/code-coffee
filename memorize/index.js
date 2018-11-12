@@ -8,6 +8,16 @@
     that value if possible.
   */
 const memoize = (cb) => {
-  // Your code here!;
+  const cache = {};
+
+  return (...params) => {
+    const key = JSON.stringify(...params);
+    if (cache[key] === undefined) {
+      console.log("it is first");
+      cache[key] = cb(...params);
+    }
+
+    return cache[key];
+  };
 };
 module.exports = { memoize };
