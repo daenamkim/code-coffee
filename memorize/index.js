@@ -13,7 +13,6 @@ const memoize = (cb) => {
   return (...params) => {
     const key = JSON.stringify(...params);
     if (cache[key] === undefined) {
-      console.log("it is first");
       cache[key] = cb(...params);
     }
 

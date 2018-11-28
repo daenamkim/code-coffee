@@ -1,7 +1,7 @@
 const { expect } = require("chai");
 const { solveGraph } = require(".");
 
-describe.only("Solve Graph", () => {
+describe("Solve Graph", () => {
   describe("Simple graph with 1 arc", () => {
     const arcs = [{ start: "a", end: "b" }];
     it("should reach b", () => {
