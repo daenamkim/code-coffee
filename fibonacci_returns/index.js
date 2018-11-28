@@ -29,7 +29,16 @@ const { BigNumber } = require("bignumber.js");
  * @returns {BigNumber}
  * @throws {Error} if n is negative
  */
-const fib = (n) => {};
+const fib = (n) => {
+  // Recursion
+  // return n < 1 ? 0 : n == 1 ? 1 : (fib(n - 1) + fib(n - 2));
+
+  // Math formula
+  return Math.ceil(
+    (1 / Math.sqrt(5) * Math.pow(((1 + Math.sqrt(5)) / 2), n)) -
+    (1 / Math.sqrt(5) * Math.pow(((1 - Math.sqrt(5)) / 2), n))
+  );
+};
 
 module.exports = {
   fib,

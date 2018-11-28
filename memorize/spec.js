@@ -1,7 +1,7 @@
 const { memoize } = require('./index');
 const { expect } = require("chai");
 
-describe.only("memorize", () => {
+describe("memorize", () => {
   // Write your own test
   it("should return a function", () => {
     const add = (a, b) => {
