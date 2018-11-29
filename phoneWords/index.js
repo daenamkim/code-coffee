@@ -40,11 +40,11 @@ const phoneWords = (numWords) => {
 
   const findNext = (perm, groupIndex) => {
     for (const number of groupNumbers[groupIndex]) {
-      perm.push(number);
+      const newPerm = [...perm, number];
       if (groupIndex >= groupNumbers.length - 1) {
-        permutations.push(perm.join());
+        permutations.push(newPerm.join(''));
       } else {
-        findNext([...perm], groupIndex + 1);
+        findNext(newPerm, groupIndex + 1);
       }
     }
   }
