@@ -34,8 +34,23 @@ const digitsDictionary = {
   9: "WXYZ",
 };
 
-const phoneWords = () => {
-  // FIXME: fill me out!
+const phoneWords = (numWords) => {
+  const groupNumbers = numWords.split('').map(num => digitsDictionary[parseInt(num)].split(''));
+  const permutations = [];
+
+  const findNext = (perm, groupIndex) => {
+    for (const number of groupNumbers[groupIndex]) {
+      perm.push(number);
+      if (groupIndex >= groupNumbers.length - 1) {
+        permutations.push(perm.join());
+      } else {
+        findNext([...perm], groupIndex + 1);
+      }
+    }
+  }
+  findNext([], 0);
+
+  return permutations;
 };
 
 module.exports = { phoneWords };

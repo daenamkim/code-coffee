@@ -5,8 +5,8 @@ const { fib } = require(".");
 // We rarely make use of this, but when you define chais callbacks as a normal function
 // "this" will be bound by chai to a context object you can set settings on, pretty neat.
 /* eslint-disable prefer-arrow-callback */
-describe.only("Fibonacci", function() {
-  it.only("should return basic n-th numbers", () => {
+describe("Fibonacci", function() {
+  it("should return basic n-th numbers", () => {
     // 1st => 1: 1
     // 2nd => 1: 1 1
     // 3rd => 2: 1 2 1
