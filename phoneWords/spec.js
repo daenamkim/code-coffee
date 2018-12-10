@@ -1,7 +1,7 @@
 const { expect } = require("chai");
 const { phoneWords } = require("./index");
 
-describe.only("Telephone Words", () => {
+describe("Telephone Words", () => {
   it("should return ['0']", () => {
     const result = phoneWords('0');
     const expected = ['0'];
