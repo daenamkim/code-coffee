@@ -1,7 +1,7 @@
 const { RobotPaths } = require("./index");
 const { expect } = require("chai");
 
-describe.only("robot paths", () => {
+describe("robot paths", () => {
   it("should return a number", () => {
     const path = new RobotPaths(3);
     expect(path).not.to.be.undefined;
