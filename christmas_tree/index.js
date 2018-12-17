@@ -13,9 +13,9 @@ const christmasTree = (num, char) => {
   }
 
   let result = "";
-  for (let i = 0; i < num; i++) {
-    const prefix = new Array(num - 1 - i).fill(" ").join("");
-    const line = new Array(i + 1).fill(char).join(" ");
+  for (let i = 1; i <= num; i++) {
+    const prefix = new Array(num - i).fill(" ").join("");
+    const line = new Array(i).fill(char).join(" ");
     result += `${prefix}${line}\n`;
   }
 
