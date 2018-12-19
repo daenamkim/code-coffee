@@ -1,7 +1,7 @@
 const { expect } = require("chai");
 const { christmasTree } = require("./index");
 
-describe.only("Christmas Tree", () => {
+describe("Christmas Tree", () => {
   it("should be a function", () => {
     expect(typeof christmasTree).to.equal("function");
   });
