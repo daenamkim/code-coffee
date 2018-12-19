@@ -63,7 +63,7 @@ describe.only("convolution", () => {
   });
 
   describe.only("convolveEntireMatrix", () => {
-    describe.only("using SOBEL_KERNEL_X", () => {
+    describe("using SOBEL_KERNEL_X", () => {
       it("should return all 0s if all values in the source are 0", () => {
         const actual = convolveEntireMatrix(ALL_ZEROES, SOBEL_KERNEL_X);
         const expected = ALL_ZEROES;
@@ -73,8 +73,6 @@ describe.only("convolution", () => {
       it("should return the correct result if the source image contains a vertical edge", () => {
         const actual = convolveEntireMatrix(verticalEdgeSource, SOBEL_KERNEL_X);
         const expected = verticalEdgeGradientX;
-        // console.log(JSON.stringify(actual));
-        // console.log(JSON.stringify(expected));
         expect(actual).to.almost.deep.equal(expected);
       });
 
@@ -111,7 +109,7 @@ describe.only("convolution", () => {
       });
     });
 
-    describe("gradientMagnitude", () => {
+    describe.only("gradientMagnitude", () => {
       it("should return 0 if all values in the source are 0", () => {
         const { gradientX, gradientY } = getGradients(ALL_ZEROES);
         const actual = computeGradientMagnitude(gradientX, gradientY);
