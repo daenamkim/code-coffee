@@ -46,7 +46,37 @@ function convolveCenterElement(source, kernel) {
  * @param {[[Number]]} kernel
  * @returns {[[Number]]}
  */
-function convolveEntireMatrix(source, kernel) {}
+function convolveEntireMatrix(source, kernel) {
+  const KERNEL_ROW = kernel.length;
+  const KERNEL_COL = kernel[0].length;
+
+  // create a specific source matrix based on location
+  // send matrix and kerner
+  // get every point and set to an array.
+  // return
+
+  const gx = [];
+  for (let i = 0; i < source.length; i++) {
+    const gxRow = [];
+    for (let j = 0; j < source[0].length; j++) {
+      const newSource = [];
+      for (let k = Math.ceil(KERNEL_ROW / 2 * -1); k <= Math.floor(KERNEL_ROW / 2); k++) {
+        const newRow = [];
+        for (let l = Math.ceil(KERNEL_COL / 2 * -1); l <= Math.floor(KERNEL_COL / 2); l++) {
+          if (!source[i + k] || !source[i + k][j + l]) {
+            newRow.push(0);
+          } else {
+            newRow.push(source[i + k][j + l]);
+          }
+        }
+        newSource.push(newRow);
+      }
+      gxRow.push(convolveCenterElement(newSource, kernel));
+    }
+    gx.push(gxRow);
+  }
+  return gx;
+}
 
 /**
  * Returns a matrix of gradient magnitudes from the given gradientApproximations.
