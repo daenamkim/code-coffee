@@ -25,7 +25,18 @@
  * @param {[[Number]]} kernel
  * @returns {Number}
  */
-function convolveCenterElement(source, kernel) {}
+function convolveCenterElement(source, kernel) {
+  const KERNEL_ROW = kernel.length - 1;
+  const KERNEL_COL = kernel[0].length - 1;
+  let result = 0;
+  for (let i = 0; i < source.length; i++) {
+    for (let j = 0; j < source[i].length; j++) {
+      result += source[i][j] * kernel[KERNEL_ROW - i][KERNEL_COL - j]
+    }
+  }
+
+  return result;
+}
 
 /**
  * Returns the result of applying convolution with the given kernel matrix

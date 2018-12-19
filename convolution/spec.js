@@ -25,8 +25,8 @@ const IDENTITY_MATRIX = [[0, 0, 0], [0, 1, 0], [0, 0, 0]];
 const SOBEL_KERNEL_X = [[1, 0, -1], [2, 0, -2], [1, 0, -1]];
 const SOBEL_KERNEL_Y = [[-1, -2, -1], [0, 0, 0], [1, 2, 1]];
 
-xdescribe("convolution", () => {
-  describe("convolveCenterElement", () => {
+describe.only("convolution", () => {
+  describe.only("convolveCenterElement", () => {
     it("should return 0 when all values in the kernel are 0", () => {
       const source = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
       const kernel = ALL_ZEROES;
