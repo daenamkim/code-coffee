@@ -89,7 +89,21 @@ function convolveEntireMatrix(source, kernel) {
  * @param  {...[[Number]]} gradientApproximations
  * @returns {[[Number]]}
  */
-function computeGradientMagnitude(...gradientApproximations) {}
+function computeGradientMagnitude(...gradientApproximations) {
+  const gx = gradientApproximations[0];
+  const gy = gradientApproximations[1];
+  const ROW = gx.length;
+  const COL = gx[0].length;
+  const gradient = [];
+  for (let i = 0; i < ROW; i++) {
+    const gradientRow = [];
+    for (let j = 0; j < COL; j++) {
+      gradientRow.push(Math.sqrt(Math.pow(gx[i][j], 2) + Math.pow(gy[i][j], 2)));
+    }
+    gradient.push(gradientRow);
+  }
+  return gradient;
+}
 
 module.exports = {
   computeGradientMagnitude,

@@ -109,7 +109,7 @@ describe.only("convolution", () => {
       });
     });
 
-    describe.only("gradientMagnitude", () => {
+    describe("gradientMagnitude", () => {
       it("should return 0 if all values in the source are 0", () => {
         const { gradientX, gradientY } = getGradients(ALL_ZEROES);
         const actual = computeGradientMagnitude(gradientX, gradientY);
