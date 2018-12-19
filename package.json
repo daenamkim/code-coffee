@@ -27,7 +27,8 @@
     "pretty-quick": "^1.4.1",
     "shelljs": "^0.8.2",
     "sinon": "^5.0.3",
-    "sinon-chai": "^3.0.0"
+    "sinon-chai": "^3.0.0",
+    "chai-almost": "^1.0.1"
   },
   "engines": {
     "node": ">=10"
