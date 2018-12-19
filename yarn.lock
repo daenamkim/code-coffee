@@ -182,6 +182,14 @@ callsites@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/callsites/-/callsites-0.2.0.tgz#afab96262910a7f33c19a5775825c69f34e350ca"
 
+chai-almost@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/chai-almost/-/chai-almost-1.0.1.tgz#43d026cf3be79a1cd513cf15af840a81243a4b60"
+  integrity sha1-Q9AmzzvnmhzVE88Vr4QKgSQ6S2A=
+  dependencies:
+    deep-eql "^2.0.2"
+    type-detect "^4.0.3"
+
 chai-http@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/chai-http/-/chai-http-4.0.0.tgz#810f579e98ae9d7847701759de7682361f2f286f"
@@ -338,6 +346,13 @@ debug@3.1.0, debug@^3.1.0:
   resolved "https://registry.yarnpkg.com/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
   dependencies:
     ms "2.0.0"
+
+deep-eql@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/deep-eql/-/deep-eql-2.0.2.tgz#b1bac06e56f0a76777686d50c9feb75c2ed7679a"
+  integrity sha1-sbrAblbwp2d3aG1Qyf63XC7XZ5o=
+  dependencies:
+    type-detect "^3.0.0"
 
 deep-eql@^3.0.0:
   version "3.0.1"
@@ -1533,7 +1548,12 @@ type-check@~0.3.2:
   dependencies:
     prelude-ls "~1.1.2"
 
-type-detect@^4.0.0, type-detect@^4.0.5:
+type-detect@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/type-detect/-/type-detect-3.0.0.tgz#46d0cc8553abb7b13a352b0d6dea2fd58f2d9b55"
+  integrity sha1-RtDMhVOrt7E6NSsNbeov1Y8tm1U=
+
+type-detect@^4.0.0, type-detect@^4.0.3, type-detect@^4.0.5:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/type-detect/-/type-detect-4.0.8.tgz#7646fb5f18871cfbb7749e69bd39a6388eb7450c"
 
