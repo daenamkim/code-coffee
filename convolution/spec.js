@@ -30,7 +30,7 @@ const SOBEL_KERNEL_X = [
 
 const SOBEL_KERNEL_Y = [[-1, -2, -1], [0, 0, 0], [1, 2, 1]];
 
-describe.only("convolution", () => {
+describe("convolution", () => {
   describe("convolveCenterElement", () => {
     it("should return 0 when all values in the kernel are 0", () => {
       const source = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
@@ -62,7 +62,7 @@ describe.only("convolution", () => {
     });
   });
 
-  describe.only("convolveEntireMatrix", () => {
+  describe("convolveEntireMatrix", () => {
     describe("using SOBEL_KERNEL_X", () => {
       it("should return all 0s if all values in the source are 0", () => {
         const actual = convolveEntireMatrix(ALL_ZEROES, SOBEL_KERNEL_X);
