@@ -1,20 +1,21 @@
-const { memoize } = require('./index');
+const { memoize } = require("./index");
 const { expect } = require("chai");
 
-describe("memorize", () => {
-  // Write your own test
-  it("should return a function", () => {
-    const add = (a, b) => {
-      console.log("it is first", a, b);
+describe.only("memorize", () => {
+  let add;
+  beforeEach(() => {
+    add = (a, b) => {
       return a + b;
     };
-
+  });
+  it("should return a function", () => {
     const memAdd = memoize(add);
-    console.log(memAdd);
-    console.log(memAdd(1, 2));
-    console.log(memAdd(3, 4));
-    console.log(memAdd(5, 5));
-    console.log(memAdd(6, 6));
-
+    expect(typeof memAdd).to.be.eql("function");
+  });
+  it("should return same value", () => {
+    const memAdd = memoize(add);
+    const expected = memAdd(5 + 4);
+    const result = memAdd(5 + 4);
+    expect(result).to.be.eql(expected);
   });
 });
