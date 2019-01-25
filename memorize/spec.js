@@ -1,7 +1,7 @@
 const { memoize } = require("./index");
 const { expect } = require("chai");
 
-describe.only("memorize", () => {
+describe("memorize", () => {
   let add;
   beforeEach(() => {
     add = (a, b) => {
