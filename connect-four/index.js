@@ -1,68 +1,81 @@
 // https://www.codewars.com/kata/529962509ce9545c76000afa/train/javascript
 
-function connectFour(board) {
-  const ROW_MAX = board.length;
-  const COL_MAX = board[0].length;
-  const disc = {
-    R: "R",
-    Y: "Y",
-    U: "-",
-  };
+const discs = {
+  R: "R",
+  Y: "Y",
+  U: "-",
+};
+const directions = {
+  D: "D",
+  L: "L",
+  R: "R",
+  LD: "LD",
+  RD: "RD",
+};
+
+const getNextRowCol = (row, col, dir) => {
+  switch (dir) {
+    case directions.D:
+      return [row + 1, col];
+    case directions.L:
+      return [row, col - 1];
+    case directions.R:
+      return [row, col + 1];
+    case directions.LD:
+      return [row + 1, col - 1];
+    case directions.RD:
+      return [row + 1, col + 1];
+  }
+};
+
+const connectFour = (board) => {
   let currentState = "in progress";
   let countDiscU = 0;
   let countConnection = 0;
 
-  const mark = (row, col, which) => {
-    if (board[row][col] === disc.U) {
+  const find = (row, col, which, dir) => {
+    if (currentState !== "in progress") {
       return;
-    } else if (board[row][col] === which) {
-      countConnection++;
     }
 
-    board[row][col] = disc.U;
-
-    if (row - 1 >= 0) {
-      mark(row - 1, col, which);
+    if (++countConnection >= 4) {
+      currentState = which;
+      return;
     }
 
-    if (row + 1 < ROW_MAX) {
-      mark(row + 1, col, which);
-    }
-
-    if (col - 1 >= 0) {
-      mark(row, col - 1, which);
-    }
-
-    if (col + 1 < COL_MAX) {
-      mark(row, col + 1, which);
+    const [nextRow, nextCol] = getNextRowCol(row, col, dir);
+    if (board[nextRow] && board[nextRow][nextCol] === which) {
+      find(nextRow, nextCol, which, dir);
     }
   };
 
-  const loop = () => {
+  const run = () => {
+    const ROW_MAX = board.length;
+    const COL_MAX = board[0].length;
+
     for (let i = 0; i < ROW_MAX; i++) {
       for (let j = 0; j < COL_MAX; j++) {
-        if (board[i][j] === disc.U) {
+        if (board[i][j] === discs.U) {
           countDiscU++;
         } else {
-          countConnection = 0;
-          const which = board[i][j];
-          mark(i, j, which);
-          if (countConnection >= 4) {
-            currentState = which;
-            return;
+          for (const key in directions) {
+            countConnection = 0;
+            find(i, j, board[i][j], directions[key]);
+            if (currentState !== "in progress") {
+              return;
+            }
           }
         }
       }
     }
   };
+  run();
 
-  loop();
-
-  if (currentState === "in progress" && countDiscU === ROW_MAX * COL_MAX) {
+  if (currentState === "in progress" && countDiscU === 0) {
     currentState = "draw";
   }
 
   return currentState;
-}
+};
 
 module.exports = { connectFour };
